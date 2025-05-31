@@ -16,11 +16,11 @@ export default function ContactPage() {
           <div className="mt-8 grid grid-cols-1 gap-6">
             <div className="flex flex-col items-center rounded-lg border bg-red-100 dark:bg-gray-800 p-6 shadow-sm">
               <h2 className="mb-5 text-xl font-pixel text-red-800 dark:text-red-300 text-[30px]">Opções</h2>
-              <p className="text-center text-black dark:text-gray-200 text-[20px]">
+              <p className="text-center text-black dark:text-gray-200 text-[15px]">
                 E-mail: tiagofreitasmachado@hotmail.com <br />
-                ------------------------------------------------------ <br />
+                ----------------------------- <br />
                 WhatsApp: +55 (41) 98506-1032 <br />
-                ------------------------------------------------------ <br />
+                ----------------------------- <br />
                 Quer conversar? Mande uma Mensagem para meu E-mail <br />
                 ou WhatsApp, se quiser saber um pouco mais sobre <br />
                 minha Pessoa acesse meu perfil em algumas plataformas <br />

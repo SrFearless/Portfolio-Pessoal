@@ -25,7 +25,7 @@ export default function ProjectsPage() {
       label: "Trabalhos Escolares",
       modalTitle: "Vale Nota ;)",
       modalMessage: "Aqui você vai encontrar meus trabalhos que são requisitados para conclusão de módulos, eles são básicos apenas para os alunos entender a lógica.",
-      href: "",
+      href: "https://trabalhos-plum.vercel.app",
       image: "/images/1.png"
     },
     {
@@ -49,7 +49,7 @@ export default function ProjectsPage() {
       label: "Minhas Pixelarts",
       modalTitle: "Venha conhecer Minhas Criações!!",
       modalMessage: "Aqui eu irei mostrar todas minhas ideia de jogo em GIF em formato pixelart, como MOBs, NPCs, Cenários e Decorações",
-      href: "",
+      href: "https://pixels-rust-two.vercel.app",
       image: "/images/3.png"
     },
     {

@@ -129,7 +129,7 @@ export function NavBar() {
                 side="left" 
                 className={cn(
                   "w-[300px]",
-                  darkMode ? "bg-gray-900" : "bg-black-100"
+                  darkMode ? "bg-gray-900" : "bg-gray-100"
                 )}
               >
                 <motion.div
