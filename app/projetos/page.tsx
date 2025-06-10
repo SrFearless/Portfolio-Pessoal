@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useRef } from 'react'; // Adicionei useRef
 import { useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import { motion } from "framer-motion"
@@ -13,11 +13,14 @@ interface Project {
   modalMessage: string;
   href: string;
   image: string;
+  video?: string; // Agora usamos um caminho local
 }
 
 export default function ProjectsPage() {
   const router = useRouter();
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const [showVideo, setShowVideo] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null); // Referência para o elemento de vídeo
 
   const projects: Project[] = [
     {
@@ -42,7 +45,8 @@ export default function ProjectsPage() {
       modalTitle: "Hora de Correr!!",
       modalMessage: "Compartilhe suas corridas, acumule pontos e conquiste recompensas na melhor rede social para corredores",
       href: "",
-      image: "/images/4.png"
+      image: "/images/4.png",
+      video: "/videos/Mundo Endorfina.mp4"
     },
     {
       id: '4',
@@ -54,9 +58,9 @@ export default function ProjectsPage() {
     },
     {
       id: '5',
-      label: "Orçamento Esquadramer",
-      modalTitle: "Organize seus Orçamentos!!",
-      modalMessage: "Aqui você vai conseguir colocar suas mercadorias e manipular os preços, assim como registrar seus clientes com as informações necessárias.",
+      label: "Maquete 3D da Esquadramer",
+      modalTitle: "Visualize seu lar aqui!!",
+      modalMessage: "Aqui eu faço o modelo 3D do seu apartamento ou casa, colocando as medidas dos quartos como a personalizaação deles também.",
       href: "",
       image: "/images/login-bg.jpg"
     }
@@ -64,15 +68,31 @@ export default function ProjectsPage() {
 
   const handleProjectClick = (project: Project) => {
     setSelectedProject(project);
+    setShowVideo(false);
+    if (videoRef.current) {
+      videoRef.current.pause(); // Pausa o vídeo quando um novo projeto é selecionado
+    }
   };
 
   const handleCloseModal = () => {
     setSelectedProject(null);
+    setShowVideo(false);
+    if (videoRef.current) {
+      videoRef.current.pause();
+    }
   };
 
   const handleNavigate = () => {
     if (selectedProject?.href) {
       router.push(selectedProject.href);
+    } else if (selectedProject?.video) {
+      setShowVideo(true);
+      // Inicia o vídeo quando o botão é clicado
+      setTimeout(() => {
+        if (videoRef.current) {
+          videoRef.current.play().catch(e => console.error("Erro ao reproduzir vídeo:", e));
+        }
+      }, 100);
     }
   };
 
@@ -113,12 +133,26 @@ export default function ProjectsPage() {
 
           {selectedProject && (
             <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
-              <div className="bg-red-100 dark:bg-gray-800 rounded-lg p-6 max-w-md w-full">
+              <div className={`bg-red-100 dark:bg-gray-800 rounded-lg p-6 ${showVideo && selectedProject.video ? 'max-w-2xl' : 'max-w-md'} w-full`}>
                 <h2 className="text-2xl font-pixel text-center mb-4 text-red-800 dark:text-red-200">
                   {selectedProject.modalTitle}
                 </h2>
                 
                 <p className="mb-6 text-gray-800 dark:text-gray-200">{selectedProject.modalMessage}</p>
+                
+                {showVideo && selectedProject.video ? (
+                  <div className="mb-4 overflow-hidden rounded-lg">
+                    <video
+                      ref={videoRef}
+                      width="100%"
+                      controls
+                      className="w-full rounded-lg"
+                    >
+                      <source src={selectedProject.video} type="video/mp4" />
+                      Seu navegador não suporta o elemento de vídeo.
+                    </video>
+                  </div>
+                ) : null}
                 
                 <div className="flex justify-end space-x-3">
                   <Button 
@@ -131,10 +165,11 @@ export default function ProjectsPage() {
                   
                   <Button 
                     onClick={handleNavigate}
-                    disabled={!selectedProject.href}
+                    disabled={!selectedProject.href && !selectedProject.video}
                     className="bg-red-800 dark:bg-red-700 hover:bg-red-900 dark:hover:bg-red-600"
                   >
-                    {selectedProject.href ? "Ir!" : "Em breve"}
+                    {selectedProject.href ? "Ir!" : 
+                     selectedProject.video ? (showVideo ? "Assistindo..." : "Ver Vídeo") : "Em breve"}
                   </Button>
                 </div>
               </div>
