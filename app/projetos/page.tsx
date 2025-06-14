@@ -61,7 +61,7 @@ export default function ProjectsPage() {
       label: "Maquete 3D da Esquadramer",
       modalTitle: "Visualize seu lar aqui!!",
       modalMessage: "Aqui eu faço o modelo 3D do seu apartamento ou casa, colocando as medidas dos quartos como a personalizaação deles também.",
-      href: "",
+      href: "https://maquete3-d-tau.vercel.app",
       image: "/images/login-bg.jpg"
     }
   ];
