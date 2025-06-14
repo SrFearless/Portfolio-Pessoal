@@ -17,6 +17,13 @@ const educationItems = [
 ];
 
 const skills = [
+  "Análise e Desenvolvimento de Sistemas",
+  "Linguagem de Programação: CSS, HTML, Javascript, PlantUML e Python",
+  "Banco de Dados: MySQL, DBdesigner, Node.js",
+  "React (Next.js) e TypeScript",
+  "Tailwind CSS e arquitetura de componentes",
+  "Desenvolvimento de APIs RESTful",
+  "Testes e práticas de Clean Code",
   "Word, Excel e PowerPoint: Avançado",
   "Informática em Geral: Avançado",
   "Sistemas Operacionais: Windows XP/7/8/10/11 e Linux",
@@ -39,18 +46,39 @@ const skills = [
   "Primeiros Socorros",
   "SCI e Áreas Remotas",
   "NR-20 e NR-23",
-  "Treinamento de Trocador de Molde",
-  "Análise e Desenvolvimento de Sistemas",
-  "Linguagem de Programação: CSS, HTML, Javascript, PlantUML e Python",
-  "Banco de Dados: MySQL, DBdesigner, Node.js",
-  "React (Next.js) e TypeScript",
-  "Tailwind CSS e arquitetura de componentes",
-  "Desenvolvimento de APIs RESTful",
-  "Testes e práticas de Clean Code"
+  "Treinamento de Trocador de Molde"
+];
+
+const certificates = [
+  "/certificados/Certificado - CEDASPY.jpg",
+  "/certificados/Certificado - DATAMIX.jpg",
+  "/certificados/Certificado - GR.jpg",
+  "/certificados/Certificado - CEBRAC.jpg",
+  "/certificados/Certificado - FELTAN.Png",
+  "/certificados/Certificado - ASM.jpg",
+  "/certificados/Certificado - BC.jpg",
+  "/certificados/Certificado - ESTAGIO.jpg",
+  "/certificados/Certificado - AREAS REMOTAS.jpg",
+  "/certificados/Certificado - Padilha.jpg",
+  "/certificados/Certificado - PROEPE.jpg",
 ];
 
 export default function ResumePage() {
   const [showModal, setShowModal] = useState(false);
+  const [showCertificatesModal, setShowCertificatesModal] = useState(false);
+  const [currentCertificateIndex, setCurrentCertificateIndex] = useState(0);
+
+  const nextCertificate = () => {
+    setCurrentCertificateIndex((prevIndex) => 
+      prevIndex === certificates.length - 1 ? 0 : prevIndex + 1
+    );
+  };
+
+  const prevCertificate = () => {
+    setCurrentCertificateIndex((prevIndex) => 
+      prevIndex === 0 ? certificates.length - 1 : prevIndex - 1
+    );
+  };
 
   return (
     <ThemeWrapper>
@@ -90,6 +118,12 @@ export default function ResumePage() {
                   alt="Tiago de Freitas Machado"
                   className="h-64 w-64 rounded-full object-cover border-4 border-red-800 dark:border-red-700 shadow-lg"
                 />
+                <Button
+                  onClick={() => setShowCertificatesModal(true)}
+                  className="bg-red-100 dark:bg-red-900/50 border border-red-800 dark:border-red-700 text-red-900 dark:text-red-200 hover:bg-red-400/90 dark:hover:bg-red-800/80"
+                >
+                  Certificados
+                </Button>
               </div>
             </div>
 
@@ -124,6 +158,49 @@ export default function ResumePage() {
                     </li>
                   ))}
                 </ul>
+              </div>
+            </div>
+          )}
+
+          {showCertificatesModal && (
+            <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4" onClick={() => setShowCertificatesModal(false)}>
+              <div className="bg-red-200/90 dark:bg-gray-700/95 rounded-lg shadow-lg max-w-4xl w-full p-6 relative" onClick={e => e.stopPropagation()}>
+                <button 
+                  onClick={() => setShowCertificatesModal(false)} 
+                  className="absolute top-3 right-3 text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white text-2xl"
+                >
+                  ✕
+                </button>
+
+                <h2 className="text-2xl text-red-800 dark:text-red-200 font-semibold mb-6 text-center">Meus Certificados</h2>
+                
+                <div className="flex items-center justify-center space-x-4">
+                  <button 
+                    onClick={prevCertificate}
+                    className="text-red-800 dark:text-red-200 hover:text-red-600 dark:hover:text-red-400 text-4xl"
+                  >
+                    &larr;
+                  </button>
+                  
+                  <div className="flex-1 flex justify-center">
+                    <img 
+                      src={certificates[currentCertificateIndex]} 
+                      alt={`Certificado ${currentCertificateIndex + 1}`}
+                      className="max-h-[70vh] max-w-full object-contain rounded-md border border-red-800 dark:border-red-700"
+                    />
+                  </div>
+                  
+                  <button 
+                    onClick={nextCertificate}
+                    className="text-red-800 dark:text-red-200 hover:text-red-600 dark:hover:text-red-400 text-4xl"
+                  >
+                    &rarr;
+                  </button>
+                </div>
+                
+                <div className="text-center mt-4 text-red-800 dark:text-red-200">
+                  {currentCertificateIndex + 1} / {certificates.length}
+                </div>
               </div>
             </div>
           )}

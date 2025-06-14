@@ -4,7 +4,7 @@ import { ThemeWrapper } from '@/components/ThemeWrapper';
 export default function ContactPage() {
   return (
     <ThemeWrapper>
-      <div className="container mx-auto px-4 py-16">
+      <div className="container mx-auto px-4 py-12">
         <div className="flex flex-col items-center justify-center space-y-12 text-center">
           <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-red-500 dark:text-red-400">
             Contato
