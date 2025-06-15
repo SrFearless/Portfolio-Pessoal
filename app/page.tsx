@@ -12,7 +12,8 @@ export default function Home() {
         </svg>
       ),
       title: "Portfólio",
-      description: "Quer saber mais sobre minha pessoa? Aqui mostro minhas especialidades, formação e o que espero encontrar como programador."
+      description: "Quer saber mais sobre minha pessoa? Aqui mostro minhas especialidades, formação e o que espero encontrar como programador.",
+      href: "/curriculo"
     },
     {
       icon: (
@@ -28,7 +29,8 @@ export default function Home() {
         </svg>
       ),
       title: "Projetos",
-      description: "Apresento os meus trabalhos, onde sempre irei atualizar os projetos em andamento."
+      description: "Apresento os meus trabalhos, onde sempre irei atualizar os projetos em andamento.",
+      href: "/projetos"
     },
     {
       icon: (
@@ -42,7 +44,8 @@ export default function Home() {
         </svg>
       ),
       title: "Quer falar Comigo?",
-      description: "Na aba 'Contato' você encontrará meu telefone, e-mail e minhas redes-sociais para me contatar ou deixar uma Mensagem para eu Ver."
+      description: "Na aba 'Contato' você encontrará meu telefone, e-mail e minhas redes-sociais para me contatar ou deixar uma Mensagem para eu Ver.",
+      href: "/contato"
     }
   ];
 
@@ -66,6 +69,7 @@ export default function Home() {
                 icon={feature.icon}
                 title={feature.title}
                 description={feature.description}
+                href={feature.href}
               />
             ))}
           </div>

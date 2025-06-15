@@ -25,45 +25,45 @@ export default function ProjectsPage() {
   const projects: Project[] = [
     {
       id: '1',
-      label: "Trabalhos Escolares",
-      modalTitle: "Vale Nota ;)",
-      modalMessage: "Aqui você vai encontrar meus trabalhos que são requisitados para conclusão de módulos, eles são básicos apenas para os alunos entender a lógica.",
-      href: "https://trabalhos-plum.vercel.app",
-      image: "/images/1.png"
-    },
-    {
-      id: '2',
-      label: "Fichamer",
-      modalTitle: "Aventura-se Agora!!",
-      modalMessage: "Uma Ficha para Fãs de D&D Edição 5 onde você vai poder aumentar a imersão na sua Mesa.",
-      href: "",
-      image: "/images/2.png"
-    },
-    {
-      id: '3',
       label: "Mundo Endorfina",
       modalTitle: "Hora de Correr!!",
       modalMessage: "Compartilhe suas corridas, acumule pontos e conquiste recompensas na melhor rede social para corredores",
       href: "",
-      image: "/images/4.png",
+      image: "/images/4.gif",
       video: "/videos/Mundo Endorfina.mp4"
     },
     {
+      id: '2',
+      label: "Trabalhos Escolares",
+      modalTitle: "Vale Nota ;)",
+      modalMessage: "Aqui você vai encontrar meus trabalhos que são requisitados para conclusão de módulos, eles são básicos apenas para os alunos entender a lógica.",
+      href: "https://trabalhos-plum.vercel.app",
+      image: "/images/1.gif"
+    },
+    {
       id: '4',
+      label: "Maquetes 3D",
+      modalTitle: "Visualize seu lar aqui!!",
+      modalMessage: "Aqui eu faço o modelo 3D do seu apartamento ou casa, colocando as medidas dos quartos como a personalizaação deles também.",
+      href: "https://maquete3-d-tau.vercel.app",
+      image: "/images/5.gif"
+    },
+    {
+      id: '3',
       label: "Minhas Pixelarts",
       modalTitle: "Venha conhecer Minhas Criações!!",
       modalMessage: "Aqui eu irei mostrar todas minhas ideia de jogo em GIF em formato pixelart, como MOBs, NPCs, Cenários e Decorações",
       href: "https://pixels-rust-two.vercel.app",
-      image: "/images/3.png"
+      image: "/images/3.gif"
     },
     {
       id: '5',
-      label: "Maquete 3D da Esquadramer",
-      modalTitle: "Visualize seu lar aqui!!",
-      modalMessage: "Aqui eu faço o modelo 3D do seu apartamento ou casa, colocando as medidas dos quartos como a personalizaação deles também.",
-      href: "https://maquete3-d-tau.vercel.app",
-      image: "/images/login-bg.jpg"
-    }
+      label: "Fichamer",
+      modalTitle: "Aventura-se Agora!!",
+      modalMessage: "Uma Ficha para Fãs de D&D Edição 5 onde você vai poder aumentar a imersão na sua Mesa.",
+      href: "",
+      image: "/images/2.gif"
+    },
   ];
 
   const handleProjectClick = (project: Project) => {
@@ -117,7 +117,7 @@ export default function ProjectsPage() {
               {projects.map((project) => (
                 <div 
                   key={project.id}
-                  className="relative h-28 w-full overflow-hidden rounded-lg border border-red-900 dark:border-red-700 shadow-sm transition-all hover:shadow-md"
+                  className="relative h-32 w-full overflow-hidden rounded-lg border border-red-900 dark:border-red-700 shadow-sm transition-all hover:shadow-md"
                   style={{ backgroundImage: `url(${project.image})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
                 >
                   <Button

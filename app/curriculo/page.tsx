@@ -54,7 +54,7 @@ const certificates = [
   "/certificados/Certificado - DATAMIX.jpg",
   "/certificados/Certificado - GR.jpg",
   "/certificados/Certificado - CEBRAC.jpg",
-  "/certificados/Certificado - FELTAN.Png",
+  "/certificados/Certificado - FELTAN.jpg",
   "/certificados/Certificado - ASM.jpg",
   "/certificados/Certificado - BC.jpg",
   "/certificados/Certificado - ESTAGIO.jpg",
