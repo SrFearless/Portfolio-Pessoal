@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef } from 'react'; // Adicionei useRef
+import { useState, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import { motion } from "framer-motion"
@@ -13,21 +13,22 @@ interface Project {
   modalMessage: string;
   href: string;
   image: string;
-  video?: string; // Agora usamos um caminho local
+  video?: string;
+  download?: string; // Alterado de 'game' para 'download'
 }
 
 export default function ProjectsPage() {
   const router = useRouter();
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [showVideo, setShowVideo] = useState(false);
-  const videoRef = useRef<HTMLVideoElement>(null); // Referência para o elemento de vídeo
+  const videoRef = useRef<HTMLVideoElement>(null);
 
   const projects: Project[] = [
     {
       id: '1',
       label: "Mundo Endorfina",
       modalTitle: "Hora de Correr!!",
-      modalMessage: "Compartilhe suas corridas, acumule pontos e conquiste recompensas na melhor rede social para corredores",
+      modalMessage: "Aplicativo requisitado por cliente (Compartilhe suas corridas, acumule pontos e conquiste recompensas na melhor rede social para corredores)",
       href: "",
       image: "/images/4.gif",
       video: "/videos/Mundo Endorfina.mp4"
@@ -52,7 +53,7 @@ export default function ProjectsPage() {
       id: '3',
       label: "Minhas Pixelarts",
       modalTitle: "Venha conhecer Minhas Criações!!",
-      modalMessage: "Aqui eu irei mostrar todas minhas ideia de jogo em GIF em formato pixelart, como MOBs, NPCs, Cenários e Decorações",
+      modalMessage: "Aqui eu irei mostrar todas minhas ideias para jogo em resolução pixelart, como MOBs, NPCs, Cenários e Decorações",
       href: "https://pixels-rust-two.vercel.app",
       image: "/images/3.gif"
     },
@@ -64,13 +65,22 @@ export default function ProjectsPage() {
       href: "",
       image: "/images/2.gif"
     },
+    {
+      id: '6',
+      label: "Prevalecer do Heroi",
+      modalTitle: "O Rei precisa de você!!",
+      modalMessage: "Aqui é um projeto meu que há uns 10 anos atrás (2015) eu tentei criar um jogo estilo RPG 2D de 4 direções, infelizmente ficou incabado somente com um gostinho do que poderia ser e só programado para PC. (Movimento = ←,↑,↓,→) e (Ataque = Z)",
+      href: "",
+      image: "/images/6.gif",
+      download: "/games/Prevalecer do Heroi.exe"
+    },
   ];
 
   const handleProjectClick = (project: Project) => {
     setSelectedProject(project);
     setShowVideo(false);
     if (videoRef.current) {
-      videoRef.current.pause(); // Pausa o vídeo quando um novo projeto é selecionado
+      videoRef.current.pause();
     }
   };
 
@@ -82,17 +92,30 @@ export default function ProjectsPage() {
     }
   };
 
+  const handleDownload = () => {
+    if (selectedProject?.download) {
+      // Cria um link temporário para forçar o download
+      const link = document.createElement('a');
+      link.href = selectedProject.download;
+      link.download = selectedProject.download.split('/').pop() || 'game.exe';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+  };
+
   const handleNavigate = () => {
     if (selectedProject?.href) {
       router.push(selectedProject.href);
     } else if (selectedProject?.video) {
       setShowVideo(true);
-      // Inicia o vídeo quando o botão é clicado
       setTimeout(() => {
         if (videoRef.current) {
           videoRef.current.play().catch(e => console.error("Erro ao reproduzir vídeo:", e));
         }
       }, 100);
+    } else if (selectedProject?.download) {
+      handleDownload();
     }
   };
 
@@ -140,6 +163,14 @@ export default function ProjectsPage() {
                 
                 <p className="mb-6 text-gray-800 dark:text-gray-200">{selectedProject.modalMessage}</p>
                 
+                {selectedProject.download && (
+                  <div className="mb-4 p-3 bg-red-200/50 dark:bg-gray-700/50 rounded-md">
+                    <p className="text-sm text-red-900 dark:text-red-200">
+                      Este é um arquivo executável (.exe) para Windows. Após o download, execute-o para jogar.
+                    </p>
+                  </div>
+                )}
+
                 {showVideo && selectedProject.video ? (
                   <div className="mb-4 overflow-hidden rounded-lg">
                     <video
@@ -165,11 +196,12 @@ export default function ProjectsPage() {
                   
                   <Button 
                     onClick={handleNavigate}
-                    disabled={!selectedProject.href && !selectedProject.video}
+                    disabled={!selectedProject.href && !selectedProject.video && !selectedProject.download}
                     className="bg-red-800 dark:bg-red-700 hover:bg-red-900 dark:hover:bg-red-600"
                   >
                     {selectedProject.href ? "Ir!" : 
-                     selectedProject.video ? (showVideo ? "Assistindo..." : "Ver Vídeo") : "Em breve"}
+                     selectedProject.video ? (showVideo ? "Assistindo..." : "Ver Vídeo") :
+                     selectedProject.download ? "Baixar Jogo" : "Em breve"}
                   </Button>
                 </div>
               </div>
