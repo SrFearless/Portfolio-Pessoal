@@ -74,6 +74,14 @@ export default function ProjectsPage() {
       image: "/images/6.gif",
       download: "/games/Prevalecer do Heroi.exe"
     },
+    {
+      id: '7',
+      label: "Discursos",
+      modalTitle: "Discursos de Congregações",
+      modalMessage: "Esboços de discursos meus sendo eles de 5/30 Minutos",
+      href: "https://discursos.vercel.app",
+      image: "/images/2.gif"
+    },
   ];
 
   const handleProjectClick = (project: Project) => {
