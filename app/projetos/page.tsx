@@ -69,7 +69,7 @@ export default function ProjectsPage() {
       id: '6',
       label: "Prevalecer do Heroi",
       modalTitle: "O Rei precisa de você!!",
-      modalMessage: "Aqui é um projeto meu que há uns 10 anos atrás (2015) eu tentei criar um jogo estilo RPG 2D de 4 direções, infelizmente ficou incabado somente com um gostinho do que poderia ser e só programado para PC. (Movimento = ←,↑,↓,→) e (Ataque = Z)",
+      modalMessage: "Aqui é um projeto meu que há uns 10 anos atrás (2015) eu tentei criar um jogo estilo RPG 2D de 4 direções, infelizmente ficou incabado somente com um gostinho do que poderia ser, uma observasão é que não foi programado para os botões na tela. COMANDOS = (Movimento = ←,↑,↓,→) e (Ataque = Z)",
       href: "",
       image: "/images/6.gif",
       download: "/games/Prevalecer do Heroi.exe"
@@ -77,10 +77,10 @@ export default function ProjectsPage() {
     {
       id: '7',
       label: "Discursos",
-      modalTitle: "Discursos de Congregações",
-      modalMessage: "Esboços de discursos meus sendo eles de 5/30 Minutos",
+      modalTitle: "Designações de Congregações",
+      modalMessage: "Se você acabou esquecendo seu esboço ou o arquivo para seu dispositivo registre diretamente online nesse site os seus discursos e designações.",
       href: "https://discursos.vercel.app",
-      image: "/images/2.gif"
+      image: "/images/7.gif"
     },
   ];
 
