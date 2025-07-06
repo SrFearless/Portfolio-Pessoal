@@ -4,7 +4,7 @@ import { usePathname } from "next/navigation"
 import { useEffect, useState } from "react"
 
 const topRunners = [
-  {name: "Somente um jovem de 23 anos que sempre foi fascinado pela tecnologia, e depois de ver diversos programas práticos, jogos complexos e sites cheios de funções resultou nesta curiosidade de se perguntar: Como funciona? Como foi criado?"},
+  {name: "Somente um jovem de 24 anos que sempre foi fascinado pela tecnologia, e depois de ver diversos programas práticos, jogos complexos e sites cheios de funções resultou nesta curiosidade de se perguntar: Como funciona? Como foi criado?"},
 ]
 
 export default function RankingMarquee() {

@@ -58,7 +58,7 @@ export default function Home() {
           </h1>
           
           <p className="max-w-4xl text-xl text-black dark:text-white py-9 border border-red-800 dark:border-red-900 bg-secondary-light dark:bg-secondary-dark p-2 shadow-sm">
-            Somente um jovem de 23 anos que sempre foi fascinado pela tecnologia, e depois de ver diversos programas práticos, 
+            Somente um jovem de 24 anos que sempre foi fascinado pela tecnologia, e depois de ver diversos programas práticos, 
             jogos complexos e sites cheios de funções resultou nesta curiosidade de se perguntar: Como funciona? Como foi criado?
           </p>
 
